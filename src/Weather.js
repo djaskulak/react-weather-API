@@ -4,21 +4,26 @@ import './Weather.css'
 import RadioButton from './RadioButton'
 
 function Weather () {
-    const [zip, setZip] = useState('94107')
+    const [zip, setZip] = useState(' ')
     const [unit, setUnit] = useState(' ')
+    const [data, setData] = useState(null)
 
     return (
         <div className="Weather">
-            <h1>{zip} {unit}</h1>
+            {data && <h1>{data.temp}</h1>}
 
-            <form>
+            <form onSubmit={ e => {
+                e.preventDefault()
+                // load weather data
+                // setData(newData)
+            }}>
                 <div>
                     <input 
                         placeHolder="Enter zip code"
                         value={zip}
                         onChange={ e => setZip(e.target.value) }
                     />
-                    <button>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
 
                 <select 

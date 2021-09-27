@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './Weather.css'
 
+import RadioButton from './RadioButton'
+
 function Weather () {
     const [zip, setZip] = useState('94107')
     const [unit, setUnit] = useState(' ')
@@ -28,33 +30,24 @@ function Weather () {
                     <option value="standard">Kelvin</option>
                 </select>
 
-                <label>
-                    <input 
-                        type="radio"
-                        name="unit"
-                        checked={unit === 'metric'}
-                        onChange={() => setUnit('metric')}
-                    />
-                    Metric
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="unit"
-                        checked={unit === 'imperial'}
-                        onChange={() => setUnit('imperial')}
-                    />
-                    Imperial
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="unit"
-                        checked={unit === 'standard'}
-                        onChange={() => setUnit('standard')}
-                    />
-                    Standard
-                </label>
+                <RadioButton 
+                    label="metric"
+                    name="unit"
+                    checked={unit === 'metric'}
+                    onChange={() => setUnit('metric')}
+                />
+               <RadioButton 
+                    label="imperial"
+                    name="unit"
+                    checked={unit === 'imperial'}
+                    onChange={() => setUnit('imperial')}
+                />
+                <RadioButton 
+                    label="standard"
+                    name="unit"
+                    checked={unit === 'standard'}
+                    onChange={() => setUnit('standard')}
+                />
 
             </form>
         </div>

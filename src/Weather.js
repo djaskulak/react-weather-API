@@ -8,6 +8,19 @@ function Weather () {
     const [unit, setUnit] = useState(' ')
     const [data, setData] = useState(null)
 
+    //---------------------------------------------
+    async function fetchWeather() {
+        //fetch weather
+        const apikey = 'd28de320f2b47eff8c21858d6ea344f2'
+        const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},appid=${apikey}&units=${unit}`
+        const res = await fetch(path)
+        const json = await res.json()
+
+        console.log(json)
+        //setData
+    }
+    //---------------------------------------------
+
     return (
         <div className="Weather">
             {data && <h1>{data.temp}</h1>}
@@ -15,11 +28,12 @@ function Weather () {
             <form onSubmit={ e => {
                 e.preventDefault()
                 // load weather data
+                fetchWeather()
                 // setData(newData)
             }}>
                 <div>
                     <input 
-                        placeHolder="Enter zip code"
+                        placeholder="Enter zip code"
                         value={zip}
                         onChange={ e => setZip(e.target.value) }
                     />

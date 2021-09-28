@@ -1,5 +1,11 @@
 function WeatherDisplay(props) {
-    const { temp, feelsLike, description } = props
+    const { temp, feelsLike, description, cod, message } = props
+
+    if (cod !== 200) {
+        return (
+            <small>{message}</small>
+        )
+    }
 
     return (
         <div className="WeatherDisplay">
